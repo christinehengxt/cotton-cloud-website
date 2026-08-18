@@ -1,21 +1,40 @@
+import { Link } from 'react-router-dom';
 import Logo from './Logo';
+import BagIcon from './BagIcon';
+import AccountIcon from './AccountIcon';
+import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 
 export default function Nav() {
+  const { count } = useCart();
+  const { user } = useAuth();
+
   return (
     <nav>
-      <div className="nav-brand">
-        <Logo width={32} height={48} stroke="#8a6c5e" />
+      <Link to="/" className="nav-brand">
+        <Logo width={44} height={30} stroke="#8a6c5e" />
         <div className="nav-wordmark">
           <span className="name">Cotton Cloud</span>
           <span className="tagline">move softly · feel beautiful</span>
         </div>
-      </div>
+      </Link>
       <ul className="nav-links">
-        <li><a href="#collection">Collection</a></li>
-        <li><a href="#about">Story</a></li>
-        <li><a href="#newsletter">Journal</a></li>
+        <li><Link to="/collection">Collection</Link></li>
+        <li><Link to="/best-sellers">Best Sellers</Link></li>
       </ul>
-      <button className="nav-cta">Shop Now</button>
+      <div className="nav-actions">
+        <Link to="/checkout" className="nav-cta nav-cart" aria-label={`Bag${count > 0 ? `, ${count} items` : ''}`}>
+          <BagIcon />
+          {count > 0 && <span className="nav-cart-badge">{count}</span>}
+        </Link>
+        <Link
+          to={user ? '/account' : '/login'}
+          className="nav-cta nav-account"
+          aria-label={user ? `Account, ${user.name}` : 'Log in'}
+        >
+          <AccountIcon />
+        </Link>
+      </div>
     </nav>
   );
 }

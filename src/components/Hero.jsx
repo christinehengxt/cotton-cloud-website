@@ -18,7 +18,7 @@ export default function Hero() {
         </div>
       </div>
       <div className="hero-visual">
-        <Logo width={260} height={390} stroke="#3d2e28" opacity={0.1} />
+        <Logo width={320} height={235} stroke="#3d2e28" bg="#f7f3ee" opacity={0.12} />
       </div>
     </section>
   );

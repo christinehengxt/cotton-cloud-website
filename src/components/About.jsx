@@ -42,7 +42,6 @@ export default function About() {
             that feel like a soft hug. So I started making that feeling
             available for other people too.
           </p>
-          <a href="#" className="btn-ghost-light">Read Our Story</a>
         </div>
         <div className="about-values">
           {VALUES.map((value) => (
