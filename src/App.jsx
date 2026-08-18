@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import ProductPage from './pages/ProductPage';
 import CollectionPage from './pages/CollectionPage';
@@ -14,6 +15,7 @@ import AccountPage from './pages/AccountPage';
 export default function App() {
   return (
     <div className="page-wrap">
+      <ScrollToTop />
       <Nav />
       <main className="page-content">
         <Routes>
